@@ -22,13 +22,15 @@ You can utilize the String format property within the binding to format the colu
 ##### C#
 
 ```C#
-private void DataGrid_AutoGeneratingColumn(object? sender, DataGridAutoGeneratingColumnEventArgs e)
+public MainPage()
 {
-    if (e.Column.MappingName == "Salary")
-    {
-        e.Column = new DataGridTextColumn() { MappingName = "Salary", HeaderText = "Salary" };
-        e.Column.DisplayBinding = new Binding() { Path = "Salary", StringFormat = "{0:C}" };
-    }
+    InitializeComponent();
+
+    //Equivalent to the code in the XAMl section
+
+    DataGridTextColumn salaryColumn = new DataGridTextColumn() { MappingName = "Salary", HeaderText = "Salary" };
+    salaryColumn.DisplayBinding = new Binding() { Path = "Salary", StringFormat = "{0:C}" };
+    dataGrid.Columns.Add(salaryColumn);
 }
 ```
 
